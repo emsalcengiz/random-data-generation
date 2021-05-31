@@ -16,7 +16,7 @@ topic_name = 'my_topic'
 
 
 p = Producer(
-    {'bootstrap.servers': kafka_advanced_listener} # Producer' ın veriyi yazacağı broker
+    {'bootstrap.servers': kafka_advanced_listener}
 )
 
 while True:
