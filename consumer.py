@@ -15,7 +15,6 @@ c = Consumer(
 )
 
 c.subscribe([topic_name]) # Bu consumer' ın bağlandığımız broker' daki hangi topic' ı okuyacağını belirtiyoruz.
-a = 0
 while True:
     
     msg = c.poll(5.0) # bu timeout sanırım ama ne işe yarar bilmiyorum
@@ -25,10 +24,9 @@ while True:
     if msg.error():
         print(f"Consumer error: {msg.error()}")
         continue
-    a+=1
-    print(f"Received message: {msg.value().decode('utf-8')}, {a}")
+    print(f"Received message: {msg.value().decode('utf-8')}, {msg.partition()}")
     """
-        msg.headers(), msg.key(), msg.latency(), msg.offset(), msg.partition(), msg.timestamp(), msg.topic(),
+        msg.headers(), msg.key(), msg.latency(), msg.offset(), msg.timestamp(), msg.topic(),
         msg.len() -> bir tek bu fonksiyon çalışmadı anlamadım.
     """
 

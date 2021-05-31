@@ -3,7 +3,9 @@ from confluent_kafka.admin import NewTopic, AdminClient
 
 kafka_advanced_listener = 'PLAINTEXT://localhost:29092' # Kafka' ya erişmek için kullanılacak bağlantı.
 topic_name = 'my_topic' # Kafka Broker' da oluşturulacak olan Topic
+
 partition_counts = 1 # Oluşturacağımız Topic' in partition sayısı, bölüm sayısı
+
 
 broker = AdminClient(
     {'bootstrap.servers': kafka_advanced_listener}
