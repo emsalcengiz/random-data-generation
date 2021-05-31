@@ -1,7 +1,6 @@
 from confluent_kafka import Consumer
 
-# Niyeyse consumer.py çalıştırdıktan sonra producer.py' ı çalıştırınca böyle 10-15sn consumer hiç bir şey
-#  almıyor. 10-15sn sonra kafkadaki verileri okuyor. İlginç.
+
 
 kafka_advanced_listener = 'PLAINTEXT://localhost:29092'
 topic_name = 'my_topic'
@@ -9,15 +8,15 @@ topic_name = 'my_topic'
 c = Consumer(
     {
     'bootstrap.servers': kafka_advanced_listener,
-    'group.id': 'mygroup', # Her Consumer kafka' da bir group' un içindedir. Oluşturduğumuz Consumer' ın group adı
-    'auto.offset.reset': 'earliest' # Ne olduğunu bilmiyorum.
+    'group.id': 'mygroup',
+    'auto.offset.reset': 'earliest' 
     }
 )
 
-c.subscribe([topic_name]) # Bu consumer' ın bağlandığımız broker' daki hangi topic' ı okuyacağını belirtiyoruz.
+c.subscribe([topic_name]) 
 while True:
     
-    msg = c.poll(5.0) # bu timeout sanırım ama ne işe yarar bilmiyorum
+    msg = c.poll(5.0)
     
     if msg == None:
         continue
@@ -30,4 +29,4 @@ while True:
         msg.len() -> bir tek bu fonksiyon çalışmadı anlamadım.
     """
 
-c.close() # Buraya hiç girmiyor.
+c.close()
